@@ -1,6 +1,6 @@
 //Core
-import React    from '../../node_modules/react';
-import ReactDOM from '../../node_modules/react-dom';
+import React    from './node/react';
+import ReactDOM from './node/react-dom';
 
 //Application
 import App from './App';

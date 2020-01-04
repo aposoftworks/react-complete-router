@@ -82,7 +82,11 @@ export default function Router ({basepath = window.location.pathname, guards = {
     const handleHash = React.useCallback((event) => {
         event.preventDefault();
 
-        setcurrent(window.location.pathname);
+        console.log("Update page to " + window.location.pathname);
+
+        if (window.location.pathname != current) {
+            setcurrent(window.location.pathname);
+        }
     }, [current]);
     
     //----------------------------
@@ -95,13 +99,15 @@ export default function Router ({basepath = window.location.pathname, guards = {
 
         //Unbind
         return () => {
-            document.removeEventListener("hashchange", handleHash,false);
+            document.removeEventListener("hashchange", handleHash, false);
         };
     }, []);
 
     React.useEffect(() : void => {
         //Update browser
-        window.history.pushState({}, window.document.title, current);
+        if (window.location.pathname != current) {
+            window.history.pushState("", window.document.title, current);
+        }
     }, [current]);
 
     //----------------------------

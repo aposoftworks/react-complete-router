@@ -36,3 +36,6 @@ This guard will check in the router component for a prop called auth, if its equ
 
 ### logged
 Just as guest guard, this will check for auth in router's props and will only pass if it's different from false/null.
+
+### title
+Updates the browser page when the route is applied, becareful to not stack those, since they will override one another.

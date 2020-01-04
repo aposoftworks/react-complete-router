@@ -1,6 +1,6 @@
 {
   "name": "react-complete-router",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Tired of having to implement things that should come natively? Are you the one they said that the thing you wanted is unnecessary because nobody does it? So this router is for you! I&#x27;m tired of people saying that I should implement work arounds in things that should support them, so I decided to make a router that can be fully customizable to your needs, meed RCR!",
   "author": "aposoftworks",
   "license": "BSD-3",
@@ -19,11 +19,11 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "coveralls": "jest --coverage --env=jsdom && cat ./tests/coverage/lcov.info | coveralls --env=jsdom"
   },
   "dependencies": {},
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
@@ -34,6 +34,7 @@
     "@types/react-dom": "^16.0.5",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "coveralls": "^3.0.9",
     "cross-env": "^5.1.4",
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
@@ -45,7 +46,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-typescript2": "^0.17.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-url": "^1.4.0",
     "typescript": "^2.8.3"
   },
