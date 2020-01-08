@@ -2,7 +2,7 @@
 import React from './node/react';
 
 //Router
-import { Router, Route, Switch } from './router';
+import { Router, Route, Switch } from './distrouter';
 
 //Views
 import Home 		from "./views/Home";

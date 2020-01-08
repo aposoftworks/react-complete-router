@@ -1,5 +1,5 @@
 import React from '../node/react';
-import { Link } from '../router';
+import { Link } from '../distrouter';
 
 export default function Navbar () {
 
@@ -12,13 +12,13 @@ export default function Navbar () {
             <h4>RCR</h4>
 
             <div className="sidebar-links">
-                <Link active to="/">Home</Link>
-                <Link active to="/start">How to start</Link>
-                <Link active to="/components">Components</Link>
-                <Link active to="/guards">Guards</Link>
-                <Link active to="/contexts">Contexts</Link>
-                <Link active to="/extending">Extending</Link>
-                <Link active to="/contribution">Contribution</Link>
+                <Link active className="link" to="/">Home</Link>
+                <Link active className="link" to="/start">How to start</Link>
+                <Link active className="link" to="/components">Components</Link>
+                <Link active className="link" to="/guards">Guards</Link>
+                <Link active className="link" to="/contexts">Contexts</Link>
+                <Link active className="link" to="/extending">Extending</Link>
+                <Link active className="link" to="/contribution">Contribution</Link>
             </div>
         </div>
     );

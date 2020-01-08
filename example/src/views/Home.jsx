@@ -2,7 +2,7 @@ import React from '../node/react';
 
 //Helpers
 import Digital  from '../effects/Digital';
-import { Link } from '../router';
+import { Link } from '../distrouter';
 
 export default function Home () {
     

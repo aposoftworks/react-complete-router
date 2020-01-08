@@ -19,32 +19,34 @@ export default function Route ({...props}) {
     //----------------------------
     // Callbacks
     //----------------------------
-    
+
     const onClick = React.useCallback((event) => {
         //Prevent page reload
         event.preventDefault();
-        
+
         //Add extra functionality
         if ("onClick" in props) props.onClick(event);
-        
+
         //Redirect
-        redirect(props.to);
+        redirect(props.to[0] == "/"? props.to:("/" + props.to));
     }, [props]);
 
     //----------------------------
     // Memos
     //----------------------------
-    
-    const propclassName = React.useMemo(() => {
-        const activable : string | Boolean     = props.active;
-        const baseclassname = props.className;
 
-        if (!activable)     return baseclassname? baseclassname:"";
+    const propclassName = React.useMemo(() => {
+		console.log(current, props.to);
+        const activable : string | null | Boolean   = props.active;
+		const baseclassname : string | null 		= props.className;
+
+		if (!activable)     return baseclassname? baseclassname:"";
+
         if (current === props.to) {
-            return baseclassname? (baseclassname + " "):"" + (activable === true ? "active":activable);
+            return (baseclassname? (baseclassname + " "):"") + (activable === true ? "active":activable);
         }
 
-        return "";
+        return (baseclassname? (baseclassname + " "):"");
     }, [props, current]);
 
     //----------------------------
@@ -58,4 +60,4 @@ export default function Route ({...props}) {
             {props.children}
         </a>
     );
-} 
+}

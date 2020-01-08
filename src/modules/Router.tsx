@@ -11,7 +11,7 @@ import { iRoute }   from "../interfaces/components";
 import { buildGuard, printGuard }   from "../helpers/guard";
 import defaultBundle                from "../guards";
 
-export default function Router ({basepath = window.location.pathname, guards = {}, ...props}) {
+export default function Router ({basepath = "/", guards = {}, ...props}) {
 
     //----------------------------
     // Properties
@@ -25,10 +25,10 @@ export default function Router ({basepath = window.location.pathname, guards = {
     // Callbacks
     //----------------------------
 
-    const onProcessRoute = React.useCallback((data : iRoute) : Object | boolean => { 
+    const onProcessRoute = React.useCallback((data : iRoute) : Object | boolean => {
         //Remove reserved props
         const { to, guard, ...clearedProps } = data;
-        
+
         //Check priority guards
         const prioritydata = onProcessGuard(guard, data);
         if (!prioritydata) return false;
@@ -44,7 +44,7 @@ export default function Router ({basepath = window.location.pathname, guards = {
     const onProcessGuard = React.useCallback((guards : string[]|string|undefined, route : iRoute, priority : boolean = true) : Object | boolean => {
         //Props that will be filled to the route by the end of the process
         let data = {};
-        
+
         //Guard check not necessary
         if (guards === undefined) return true;
 
@@ -76,19 +76,17 @@ export default function Router ({basepath = window.location.pathname, guards = {
     }, [current, props]);
 
     const onRedirect = React.useCallback((newpath : string) : void => {
-        setcurrent(newpath);
+        setcurrent((basepath == "/" ? "":basepath) + newpath);
     }, [current]);
 
     const handleHash = React.useCallback((event) => {
         event.preventDefault();
 
-        console.log("Update page to " + window.location.pathname);
-
         if (window.location.pathname != current) {
             setcurrent(window.location.pathname);
         }
     }, [current]);
-    
+
     //----------------------------
     // Effects
     //----------------------------
