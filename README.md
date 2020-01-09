@@ -2,7 +2,7 @@
 
 Tired of having to implement things that should come natively? Are you the one they said that the thing you wanted is unnecessary because nobody does it? So this router is for you! I&#x27;m tired of people saying that I should implement work arounds in things that should support them, so I decided to make a router that can be fully customizable to your needs, meed RCR!
 
-[![NPM](https://img.shields.io/npm/v/react-complete-router.svg)](https://www.npmjs.com/package/react-complete-router) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/darklight9811/react-latest-router.svg?branch=master)](https://travis-ci.org/darklight9811/react-latest-router) ![npm](https://img.shields.io/npm/dt/react-complete-router)
+[![NPM](https://img.shields.io/npm/v/react-complete-router.svg)](https://www.npmjs.com/package/react-complete-router) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/darklight9811/react-latest-router.svg?branch=master)](https://travis-ci.org/darklight9811/react-latest-router) ![npm](https://img.shields.io/npm/dt/react-complete-router) [![Build Status](https://github.com/aposoftworks/react-complete-router/workflows/Tests/badge.svg)](https://github.com/aposoftworks/react-complete-router/actions)
 
 ## Install
 
