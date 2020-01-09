@@ -14,7 +14,9 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
-      - uses: actions/checkout@v1      - name: Use node ${{ matrix.node }}
+	  - uses: actions/checkout@v1
+
+	  - name: Use node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}

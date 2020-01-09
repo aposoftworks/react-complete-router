@@ -1,4 +1,4 @@
-import { useContext, useCallback, createElement, useMemo, useState, useEffect, Children, isValidElement, createContext } from 'react';
+import { useState, useCallback, useEffect, createElement, useContext, useMemo, Children, isValidElement, createContext } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -47,7 +47,6 @@ var dumbdata = {
     redirect: function (data) { }
 };
 var RouterContext = createContext(dumbdata);
-//# sourceMappingURL=Router.js.map
 
 //Turn a string guard into a object
 function buildGuard(guardstring) {
@@ -77,7 +76,6 @@ function printGuard(props) {
     }
     return response;
 }
-//# sourceMappingURL=guard.js.map
 
 //Check router authentication and only pass if none is given
 function guest(_arguments, data) {
@@ -87,7 +85,6 @@ function guest(_arguments, data) {
     //Check for guest
     return !data.router["auth"];
 }
-//# sourceMappingURL=guest.js.map
 
 //Check router authentication and only pass if none is given
 function logged(_arguments, data) {
@@ -97,7 +94,6 @@ function logged(_arguments, data) {
     //Check for log
     return !!data.router["auth"];
 }
-//# sourceMappingURL=logged.js.map
 
 //Check route validation
 function when(_arguments, data) {
@@ -107,7 +103,6 @@ function when(_arguments, data) {
     //Validate
     return !!data.route["when"];
 }
-//# sourceMappingURL=when.js.map
 
 //Test if the current path passes
 function testPath(path, current, exact) {
@@ -146,7 +141,6 @@ function testPath(path, current, exact) {
 // site.com/home/hi
 // site.com/home/hi/
 // site.com/hi
-//# sourceMappingURL=route.js.map
 
 //Helpers
 //Check route validation path
@@ -159,7 +153,6 @@ function path(_arguments, data) {
     //Validate
     return testPath(data.route["path"], data.context["current"], exact);
 }
-//# sourceMappingURL=path.js.map
 
 //When this route is applied, it will insert the title into the browser
 //Be careful to not stack this guard, since one will override another
@@ -176,7 +169,6 @@ function title(_arguments, data) {
     //No need of blocking
     return true;
 }
-//# sourceMappingURL=title.js.map
 
 //Guard functions
 //Bundle of default guards
@@ -187,7 +179,6 @@ var bundle = {
     path: path,
     title: title,
 };
-//# sourceMappingURL=index.js.map
 
 function Router(_a) {
     //----------------------------
@@ -307,7 +298,6 @@ function Route(_a) {
     //----------------------------
     return createElement(Component, null);
 }
-//# sourceMappingURL=Route.js.map
 
 function Route$1(_a) {
     //----------------------------
@@ -347,7 +337,6 @@ function Route$1(_a) {
     var domprop = __rest(props, ["active", "to", "className"]);
     return (createElement("a", __assign({ onClick: onClick, href: "#" }, domprop, { className: propclassName }), props.children));
 }
-//# sourceMappingURL=Link.js.map
 
 function Switch(_a) {
     //----------------------------
@@ -389,7 +378,6 @@ function Switch(_a) {
     //----------------------------
     return ComponentToRender ? ComponentToRender : null;
 }
-//# sourceMappingURL=Switch.js.map
 
 //Modules components
 //Separated components
@@ -409,7 +397,6 @@ var bundled = {
     //Contexts
     RouterContext: RouterContext,
 };
-//# sourceMappingURL=index.js.map
 
 export default bundled;
 export { Router$1 as Router, Route$2 as Route, Link, Switch$1 as Switch, RouterContext$1 as RouterContext };

@@ -1,6 +1,6 @@
 {
 	"name": "react-complete-router",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"description": "Tired of having to implement things that should come natively? Are you the one they said that the thing you wanted is unnecessary because nobody does it? So this router is for you! I&#x27;m tired of people saying that I should implement work arounds in things that should support them, so I decided to make a router that can be fully customizable to your needs, meed RCR!",
 	"author": "aposoftworks",
 	"license": "BSD-3",
