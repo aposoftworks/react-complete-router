@@ -1,0 +1,32 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\rafae\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'jest',
+1 verbose cli   '--no-cache' ]
+2 info using npm@6.12.0
+3 info using node@v8.9.4
+4 verbose stack Error: missing script: jest
+4 verbose stack
+4 verbose stack Did you mean this?
+4 verbose stack     test
+4 verbose stack     at run (C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\lib\run-script.js:155:19)
+4 verbose stack     at C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\lib\run-script.js:63:5
+4 verbose stack     at C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:116:5
+4 verbose stack     at C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:435:5
+4 verbose stack     at checkBinReferences_ (C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:391:45)
+4 verbose stack     at final (C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:433:3)
+4 verbose stack     at then (C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:161:5)
+4 verbose stack     at C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\read-package-json\read-json.js:281:12
+4 verbose stack     at C:\Users\rafae\AppData\Roaming\npm\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:115:16
+4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+5 verbose cwd D:\programas\xamp_7.2\htdocs\react-latest-router
+6 verbose Windows_NT 10.0.18363
+7 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\rafae\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "run" "jest" "--no-cache"
+8 verbose node v8.9.4
+9 verbose npm  v6.12.0
+10 error missing script: jest
+10 error
+10 error Did you mean this?
+10 error     test
+11 verbose exit [ 1, true ]
