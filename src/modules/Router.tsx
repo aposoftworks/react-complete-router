@@ -18,7 +18,7 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
     //----------------------------
 
     //states
-    const [ current, setcurrent ]   = React.useState(basepath);
+    const [ current, setcurrent ]   = React.useState(window.location.pathname);
     const [ readyguards ]           = React.useState({...defaultBundle, ...guards});
 
     //----------------------------

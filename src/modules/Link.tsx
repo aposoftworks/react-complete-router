@@ -36,7 +36,6 @@ export default function Route ({...props}) {
     //----------------------------
 
     const propclassName = React.useMemo(() => {
-		console.log(current, props.to);
         const activable : string | null | Boolean   = props.active;
 		const baseclassname : string | null 		= props.className;
 
