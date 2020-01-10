@@ -7,7 +7,7 @@ import RouterContext from "../contexts/Router";
 //Interfaces
 import iRouterContext from "../interfaces/contexts";
 
-export default function Route ({...props}) {
+export default function Link ({...props}) {
 
     //----------------------------
     // Properties

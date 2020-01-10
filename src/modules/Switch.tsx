@@ -24,11 +24,14 @@ export default function Switch ({...props}) {
     //----------------------------
 
     React.useEffect(() => {
-        const children = React.Children.toArray(props.children);
+		const compchildren = React.Children.toArray(props.children);
 
-        for (let i = 0; i < children.length; i++) {
-            const child : JSX.Element = children[i];
-            const {to, ...childprops} = child.props;
+		//No children to render
+		if (compchildren.length == 0) return setcomponent(null);
+
+        for (let i = 0; i < compchildren.length; i++) {
+            const child							= compchildren[i];
+            const {to, children, ...childprops} = child.props;
 
             //Check if child is valid
             if (!React.isValidElement(child)) continue;
@@ -36,12 +39,21 @@ export default function Switch ({...props}) {
             //Check if route passes
             const result = processRoute(childprops);
             if (result) {
-                const newprops = {...childprops, ...(result as Object)};
+				const renderable	= to ? to : children;
+				const newprops 		= {...childprops, ...(result as Object)};
 
-                //Is a component
-                if (React.isValidElement(to)) return setcomponent (to);
-                //Is a literal
-                else return setcomponent(React.createElement(to, newprops));
+				if (typeof child.type === "function" && child.type.name == "Route") {
+					//Is a component
+					if (React.isValidElement(renderable)) return setcomponent (renderable);
+					//Is a literal
+					else return setcomponent(React.createElement(renderable, newprops));
+				}
+				else {
+					//Is a component
+					if (React.isValidElement(child)) return setcomponent (child);
+					//Is a literal
+					else return setcomponent(React.createElement(child, newprops));
+				}
             }
         }
 

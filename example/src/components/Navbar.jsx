@@ -1,5 +1,5 @@
-import React from '../node/react';
-import { Link } from '../distrouter';
+import React 	from '../node/react';
+import { Link } from '../router';
 
 export default function Navbar () {
 

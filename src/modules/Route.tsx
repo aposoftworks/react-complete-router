@@ -8,8 +8,8 @@ import iRouterContext   from "../interfaces/contexts";
 //Interfaces
 import { iRoute } from "../interfaces/components";
 
-export default function Route ({to = () => null, ...props}) {
-    
+export default function Route ({children, to = () => null, ...props}) {
+
     //----------------------------
     // Properties
     //----------------------------
@@ -24,10 +24,16 @@ export default function Route ({to = () => null, ...props}) {
     const Component = React.useCallback(() : JSX.Element | null => {
         const response = processRoute(props as iRoute);
 
-        //Route passes
-        if (response && to !== null) {
-            return React.createElement(to, {...props, ...(response as Object)});
-        }
+        if (response) {
+			//Route passes to prop to
+			if (to !== null) {
+				return React.createElement(to, {...props, ...(response as Object)});
+			}
+			//Route passes to children
+			if (children !== null) {
+				return React.createElement(children, {...props, ...(response as Object)});
+			}
+		}
 
         //Route not passes
         return null;

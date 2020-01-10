@@ -1,21 +1,20 @@
 import React from '../node/react';
 
-//Components
-import Dashview from "../components/Dashview";
-
 //Packages
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark }                                 from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function Extending () {
-    
+
 
     //----------------------------
     // Render
     //----------------------------
 
     return (
-        <Dashview title="Extending">
+        <div className="dashview">
+			<h1>Extending</h1>
+
             <p>Here you shall learn how to create your own custom guards and use them.</p>
 
             <h4>Creating guards</h4>
@@ -36,7 +35,7 @@ export default function Extending () {
     return false;
 }`}
             </SyntaxHighlighter>
-            
+
             <h4>Using your guards</h4>
 
             <p>First thing you will need to do, is to tell your router about it's existance, if the router already contains a guard with this name, it will overwrite it.</p>
@@ -57,7 +56,7 @@ export default function Extending () {
             <h4>Typescript</h4>
 
             <p>This package supports typescript, so you may extend your guards from ".tsx" files, they will help you build a stable guard. An example with typescript:</p>
-            
+
             <SyntaxHighlighter language="jsx" style={dark}>
 {`export default function when (_arguments : any[] | null, data : iGuardData) : Object | boolean {
     if (!("when" in data.route)) return true;
@@ -65,6 +64,6 @@ export default function Extending () {
     return !!data.route["when"];
 }`}
             </SyntaxHighlighter>
-        </Dashview>
+        </div>
     );
 }

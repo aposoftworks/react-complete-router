@@ -1,21 +1,20 @@
 import React from '../node/react';
 
-//Components
-import Dashview from "../components/Dashview";
-
 //Packages
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark }                                 from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function Start () {
-    
+
 
     //----------------------------
     // Render
     //----------------------------
 
     return (
-        <Dashview title="How to use it">
+        <div className="dashview">
+			<h1>How to start</h1>
+
             <p>React Complete Router (or RCR as we are going to refer it here) is a react router that aims to be the last thing you will ever need to get, so for that we aimed for extensibility, meaning that you can reimplement behaviours and fit it in any case scenario without changing the source code.</p>
 
             <h3>Installing</h3>
@@ -49,6 +48,6 @@ export default function App () {
     );
 }`}
             </SyntaxHighlighter>
-        </Dashview>
+        </div>
     );
 }

@@ -2,10 +2,10 @@ import React from '../node/react';
 
 //Helpers
 import Digital  from '../effects/Digital';
-import { Link } from '../distrouter';
+import { Link } from '../router';
 
 export default function Home () {
-    
+
 
     //----------------------------
     // Render
