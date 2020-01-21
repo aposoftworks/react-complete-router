@@ -4,9 +4,6 @@ import Route 	from "../modules/Route";
 import Link 	from "../modules/Link";
 import Switch 	from "../modules/Switch";
 
-//Helpers
-import { testPath } from "../helpers/route";
-
 //Guards
 import when 		from '../guards/when';
 import guest 		from '../guards/guest';
@@ -16,7 +13,7 @@ describe('Components present', () => {
 	it('Router', () => {
 		expect(Router).toBeTruthy();
 	});
-	
+
 	it('Route', () => {
 		expect(Route).toBeTruthy();
 	});
@@ -27,24 +24,6 @@ describe('Components present', () => {
 
 	it('Switch', () => {
 		expect(Switch).toBeTruthy();
-	});
-});
-
-describe("Path algorythm", () => {
-	it("current: / and route: /", () => {
-		expect(testPath("/", "/")).toBeTruthy();
-	});
-
-	it("current: /test and route: /", () => {
-		expect(testPath("/", "/test")).toBeFalsy();
-	});
-
-	it("current: /test and route: /what", () => {
-		expect(testPath("/what", "/test")).toBeFalsy();
-	});
-
-	it("current: /32 and route: /{id}", () => {
-		expect(testPath("/{id}", "/32")).toBeTruthy();
 	});
 });
 

@@ -10,7 +10,7 @@ export default function title (_arguments : any[] | null, data : iGuardData) : O
 	const midtitlestring	= Array.isArray(basetitle) ? basetitle[1]:"-";
 
     //Update page title
-    if (basetitle && subtitle)  document.title = basetitlestring + midtitlestring + subtitle;
+    if (basetitle && subtitle)  document.title = basetitlestring + " " + midtitlestring + " " + subtitle;
     else if (basetitle)         document.title = basetitlestring;
     else                        document.title = subtitle;
 

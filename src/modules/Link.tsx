@@ -28,12 +28,16 @@ export default function Link ({...props}) {
         if ("onClick" in props) props.onClick(event);
 
         //Redirect
-        redirect(props.to[0] == "/"? props.to:("/" + props.to));
+        redirect(targetMemo);
     }, [props]);
 
     //----------------------------
     // Memos
-    //----------------------------
+	//----------------------------
+
+	const targetMemo = React.useMemo(() => {
+		return "/" + props.to.replace(/(^\/|\/$)/, "");
+	},[props.to]);
 
     const propclassName = React.useMemo(() => {
         const activable : string | null | Boolean   = props.active;
@@ -41,7 +45,7 @@ export default function Link ({...props}) {
 
 		if (!activable)     return baseclassname? baseclassname:"";
 
-        if (current === props.to) {
+        if (current === targetMemo) {
             return (baseclassname? (baseclassname + " "):"") + (activable === true ? "active":activable);
         }
 

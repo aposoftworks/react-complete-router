@@ -17,7 +17,7 @@ export default function Navbar () {
                 <Link active className="link" to="/components">Components</Link>
                 <Link active className="link" to="/guards">Guards</Link>
                 <Link active className="link" to="/contexts">Contexts</Link>
-                <Link active className="link" to="/extending">Extending</Link>
+                <Link active className="link" to="/guards/extending">Extending</Link>
                 <Link active className="link" to="/contribution">Contribution</Link>
             </div>
         </div>

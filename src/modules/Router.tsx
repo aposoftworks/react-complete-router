@@ -25,24 +25,22 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
     // Callbacks
 	//----------------------------
 
+	const onSetCurrent = React.useCallback((newcurrent : string) => {
+		setcurrent(basepath + newcurrent.replace(/(^\/|\/$)/, ""));
+	}, [setcurrent]);
+
 	const onProcessMimic = React.useCallback((_guard : string, data : Object = {}) : Object | boolean => {
 		//Build guard
-		const guard = buildGuard(_guard[i]);
+		const guard = buildGuard(_guard);
 
 		//Guard available
 		if (guard.name in readyguards) {
-			const response = readyguards[guard.name](guard.arguments, {data, router: props, context});
-
-			//Guard fail
-			if (!response) return false;
-
-			//Fill data
-			if (typeof response === "object") data = {...data, ...response};
+			return readyguards[guard.name](guard.arguments, {data, router: props, context});
 		}
-		else if (priority) {
-			console.warn("Requested guard [" + _guards[i] + "] was not found.");
-		}
-	}, [props, readyguards, current, context]);
+
+		//No guard available
+		return false;
+	}, [props, readyguards, current]);
 
     const onProcessRoute = React.useCallback((data : iRoute) : Object | boolean => {
         //Remove reserved props
@@ -92,17 +90,16 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
 
         //All guards passes
         return data;
-    }, [current, props, context]);
-
-    const onRedirect = React.useCallback((newpath : string) : void => {
-        setcurrent((basepath == "/" ? "":basepath) + newpath);
-    }, [current]);
+    }, [current, props]);
 
     const handleHash = React.useCallback((event) => {
-        event.preventDefault();
+        //Prevent page reload
+		event.preventDefault();
 
-        if (window.location.pathname != current) {
-            setcurrent(window.location.pathname);
+		const path = window.location.pathname.replace(/(^\/|\/$)/, "");
+
+        if ("/" + path != current) {
+            onSetCurrent(window.location.pathname);
         }
     }, [current]);
 
@@ -118,11 +115,11 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
         return () => {
             document.removeEventListener("hashchange", handleHash, false);
         };
-    }, []);
+    }, [current]);
 
     React.useEffect(() : void => {
         //Update browser
-        if (window.location.pathname != current) {
+        if ("/" + window.location.pathname.replace(/(^\/|\/$)/, "") != current) {
             window.history.pushState("", window.document.title, current);
         }
     }, [current]);
@@ -135,8 +132,9 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
         current:            current,
         processRoute:       onProcessRoute,
         processGuard:       onProcessGuard,
-        redirect:           onRedirect,
-        data:               props,
+        redirect:           onSetCurrent,
+		data:               props,
+		mimic:				onProcessMimic
     };
 
     return (
