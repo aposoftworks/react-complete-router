@@ -11,7 +11,7 @@ import { iRoute }   from "../interfaces/components";
 import { buildGuard, printGuard }   from "../helpers/guard";
 import defaultBundle                from "../guards";
 
-export default function Router ({basepath = "/", guards = {}, ...props}) {
+export default function Router ({basepath = "/", guards = {}, sticky = false, ...props}) {
 
     //----------------------------
     // Properties
@@ -19,14 +19,21 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
 
     //states
     const [ current, setcurrent ]   = React.useState(window.location.pathname);
-    const [ readyguards ]           = React.useState({...defaultBundle, ...guards});
+	const [ readyguards ]           = React.useState({...defaultBundle, ...guards});
+	const [ history, sethistory ]	= React.useState<string[]>([]);
 
     //----------------------------
     // Callbacks
 	//----------------------------
 
 	const onSetCurrent = React.useCallback((newcurrent : string) => {
-		setcurrent(basepath + newcurrent.replace(/(^\/|\/$)/, ""));
+		const base 		= basepath.replace(/\/$/, "");
+		const target 	= newcurrent.replace(/(^\/|\/$)/, "");
+
+		if (base == "" && target == "")
+			setcurrent("/");
+		else
+			setcurrent(base + (target === "" ? "":("/" + target)));
 	}, [setcurrent]);
 
 	const onProcessMimic = React.useCallback((_guard : string, data : Object = {}) : Object | boolean => {
@@ -101,7 +108,15 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
         if ("/" + path != current) {
             onSetCurrent(window.location.pathname);
         }
-    }, [current]);
+	}, [current]);
+
+	const onProcessBack = React.useCallback(() => {
+		let _history 	= history;
+		let path 		= _history.pop();
+
+		sethistory(_history);
+		onSetCurrent(path || "/");
+	}, [current, history]);
 
     //----------------------------
     // Effects
@@ -118,9 +133,15 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
     }, [current]);
 
     React.useEffect(() : void => {
-        //Update browser
-        if ("/" + window.location.pathname.replace(/(^\/|\/$)/, "") != current) {
-            window.history.pushState("", window.document.title, current);
+		if ("/" + window.location.pathname.replace(/(^\/|\/$)/, "") != current) {
+			//Update browser
+			if (!sticky)
+			window.history.pushState("", window.document.title, current);
+
+			//Update internal history
+			let _history = history;
+			_history.push(current);
+			sethistory(_history);
         }
     }, [current]);
 
@@ -134,7 +155,9 @@ export default function Router ({basepath = "/", guards = {}, ...props}) {
         processGuard:       onProcessGuard,
         redirect:           onSetCurrent,
 		data:               props,
-		mimic:				onProcessMimic
+		mimic:				onProcessMimic,
+		back: 				onProcessBack,
+		basepath:			basepath,
     };
 
     return (

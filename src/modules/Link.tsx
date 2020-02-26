@@ -7,7 +7,7 @@ import RouterContext from "../contexts/Router";
 //Interfaces
 import iRouterContext from "../interfaces/contexts";
 
-export default function Link ({...props}) {
+export default function Link ({to = "/", ...props}) {
 
     //----------------------------
     // Properties
@@ -36,7 +36,7 @@ export default function Link ({...props}) {
 	//----------------------------
 
 	const targetMemo = React.useMemo(() => {
-		return "/" + props.to.replace(/(^\/|\/$)/, "");
+		return "/" + to.replace(/(^\/|\/$)/, "");
 	},[props.to]);
 
     const propclassName = React.useMemo(() => {
@@ -56,7 +56,7 @@ export default function Link ({...props}) {
     // Render
     //----------------------------
 
-    const { active, to, className, ...domprop } = props;
+    const { active, className, ...domprop } = props;
 
     return (
         <a onClick={onClick} href="#" {...domprop} className={propclassName}>

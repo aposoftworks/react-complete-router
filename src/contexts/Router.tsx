@@ -8,7 +8,8 @@ import { iRoute }       from "../interfaces/components";
 //Dumb data
 const dumbdata = {
     data: {},
-    current:"/",
+	current:"/",
+	basepath:"/",
     processRoute: (data : iRoute) : boolean | Object => !data,
     redirect: (data : string) : void => {data;}
 };

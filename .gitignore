@@ -3,6 +3,8 @@
 
 # dependencies
 node_modules
+example/src/node
+example/src/router
 
 # builds
 build

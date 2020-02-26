@@ -13,12 +13,12 @@ export default function Navbar () {
 
             <div className="sidebar-links">
                 <Link active className="link" to="/">Home</Link>
-                <Link active className="link" to="/start">How to start</Link>
-                <Link active className="link" to="/components">Components</Link>
-                <Link active className="link" to="/guards">Guards</Link>
-                <Link active className="link" to="/contexts">Contexts</Link>
-                <Link active className="link" to="/guards/extending">Extending</Link>
-                <Link active className="link" to="/contribution">Contribution</Link>
+                <Link active className="link" to="start">How to start</Link>
+                <Link active className="link" to="components">Components</Link>
+                <Link active className="link" to="guards">Guards</Link>
+                <Link active className="link" to="contexts">Contexts</Link>
+                <Link active className="link" to="guards/extending">Extending</Link>
+                <Link active className="link" to="contribution">Contribution</Link>
             </div>
         </div>
     );

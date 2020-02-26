@@ -3,8 +3,9 @@ import React from '../node/react';
 //Components
 import Digital  from "../effects/Digital";
 
-export default function NotFound () {
+export default function NotFound (props) {
 
+	console.log(props);
 
     //----------------------------
     // Render
@@ -13,7 +14,7 @@ export default function NotFound () {
     return (
         <div className="dashview">
             <Digital />
-            <h2 className="site-title">Page not found</h2>
+            <h2 className="site-title">Page {props.page} not found</h2>
         </div>
     );
 }

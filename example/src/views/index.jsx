@@ -9,6 +9,7 @@ const bundle = {
 	Contribution: 	React.lazy(() => import("./Contribution")),
 	Contexts: 		React.lazy(() => import("./Contexts")),
 	Components: 	React.lazy(() => import("./Components")),
+	NotFound: 		React.lazy(() => import("./NotFound")),
 };
 
 export default bundle;

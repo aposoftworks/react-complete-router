@@ -26,7 +26,7 @@ export default function App () {
 							<Route path="/contexts"			to={Views.Contexts}			title="Contexts" 			/>
 							<Route path="/guards/extending"	to={Views.Extending}		title="Extending"			/>
 							<Route path="/contribution"		to={Views.Contribution}		title="Contribution"		/>
-							<Router 						to={Views.NotFound} 		title="Not found"			/>
+							<Route path="/{page}"			to={Views.NotFound} 		title="Not found"			/>
 						</Switch>
 					</React.Suspense>
 				</Dashview>

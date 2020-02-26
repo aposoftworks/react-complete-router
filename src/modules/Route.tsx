@@ -6,9 +6,10 @@ import RouterContext    from "../contexts/Router";
 import iRouterContext   from "../interfaces/contexts";
 
 //Interfaces
-import { iRoute } from "../interfaces/components";
+import { iRoute } 		from "../interfaces/components";
+import { iReactProps }	from "../interfaces/iReact";
 
-export default function Route ({children, to = () => null, ...props}) {
+export default function Route ({children, to = () => null, ...props} : iReactProps) {
 
     //----------------------------
     // Properties

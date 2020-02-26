@@ -10,8 +10,9 @@ export default function path (_arguments : any[] | null, data : iGuardData) : Ob
     if (!("path" in data.route)) return true;
 
     //Is exact match
-    const exact = data.route["exact"]? data.route["exact"]:false;
+	const exact 	= data.route["exact"]? data.route["exact"]:false;
+	const current 	= (data.context["basepath"] as string).replace(/\/$/, "") + "/" + (data.context["current"] as string).replace(/^\//, "");
 
     //Validate
-    return testPath(data.context["current"] as string, data.route["path"] as string, exact as boolean);
+    return testPath(current, data.route["path"] as string, exact as boolean);
 }
