@@ -56,10 +56,10 @@ export default function Link ({to = "/", ...props}) {
     // Render
     //----------------------------
 
-    const { active, className, ...domprop } = props;
+    const { active, className, exact, negate, title, ...domprop } = props;
 
     return (
-        <a onClick={onClick} href="#" {...domprop} className={propclassName}>
+        <a {...domprop} onClick={onClick} href="#" className={propclassName}>
             {props.children}
         </a>
     );
