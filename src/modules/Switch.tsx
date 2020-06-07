@@ -16,7 +16,7 @@ export default function Switch ({...props} : iReactProps) {
     //----------------------------
 
     //States
-    const [ ComponentToRender, setcomponent ] = React.useState();
+    const [ ComponentToRender, setcomponent ] = React.useState<any>();
 
     //Contexts
     const { processRoute, current, data } = React.useContext(RouterContext) as iRouterContext;
@@ -41,20 +41,26 @@ export default function Switch ({...props} : iReactProps) {
             //Check if route passes
             const result = processRoute(childprops);
             if (result) {
-				const renderable	= to ? to : (children);
-				const newprops 		= {...childprops, ...(result as Object)};
+				const renderable					= to ? to : (children);
+				const newprops 						= {...childprops, ...(result as Object)};
+				const { path, exact, ...restprops } = newprops as {path?:string,exact?:any};
 
 				if (typeof child.type === "function" && child.type.name == "Route") {
 					//Is a component
-					if (React.isValidElement(renderable)) return setcomponent (React.cloneElement(renderable, {...(renderable.props as Object),...newprops} as React.Attributes));
+					if (React.isValidElement(renderable))
+						return setcomponent (React.cloneElement(renderable, {...(renderable.props as Object),...restprops} as React.Attributes));
 					//Is a literal
-					else return setcomponent(React.createElement(renderable, newprops));
+					else
+						return setcomponent(React.createElement(renderable, restprops));
 				}
 				else {
+
 					//Is a component
-					if (React.isValidElement(child)) return setcomponent (React.cloneElement(child, {...(child.props as Object),...newprops} as React.Attributes));
+					if (React.isValidElement(child))
+						return setcomponent (React.cloneElement(child, {...(child.props as Object),...restprops} as React.Attributes));
 					//Is a literal
-					else return setcomponent(React.createElement(child, newprops));
+					else
+						return setcomponent(React.createElement(child, restprops));
 				}
             }
         }

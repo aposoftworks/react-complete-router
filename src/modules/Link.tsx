@@ -17,27 +17,12 @@ export default function Link ({to = "/", ...props}) {
     const { redirect, current } = React.useContext(RouterContext) as iRouterContext;
 
     //----------------------------
-    // Callbacks
-    //----------------------------
-
-    const onClick = React.useCallback((event) => {
-        //Prevent page reload
-        event.preventDefault();
-
-        //Add extra functionality
-        if ("onClick" in props) props.onClick(event);
-
-        //Redirect
-        redirect(targetMemo);
-    }, [props]);
-
-    //----------------------------
     // Memos
 	//----------------------------
 
 	const targetMemo = React.useMemo(() => {
 		return "/" + to.replace(/(^\/|\/$)/, "");
-	},[props.to]);
+	},[to]);
 
     const propclassName = React.useMemo(() => {
         const activable : string | null | Boolean   = props.active;
@@ -50,7 +35,22 @@ export default function Link ({to = "/", ...props}) {
         }
 
         return (baseclassname? (baseclassname + " "):"");
-    }, [props, current]);
+    }, [props, current, targetMemo]);
+
+    //----------------------------
+    // Callbacks
+    //----------------------------
+
+    const onClick = React.useCallback((event) => {
+        //Prevent page reload
+        event.preventDefault();
+
+        //Add extra functionality
+        if ("onClick" in props) props.onClick(event);
+
+        //Redirect
+        redirect(targetMemo);
+    }, [props, redirect, targetMemo]);
 
     //----------------------------
     // Render
